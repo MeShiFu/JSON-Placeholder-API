@@ -1,5 +1,6 @@
 package com.example.jsonplaceholderapi.data.network
 
+import com.example.jsonplaceholderapi.data.model.Comment
 import com.example.jsonplaceholderapi.data.model.Post
 import com.example.jsonplaceholderapi.data.model.Todo
 import com.example.jsonplaceholderapi.data.model.User
@@ -23,4 +24,7 @@ interface ApiService {
 
     @GET("todos")
     suspend fun getTodos(@Query("userId") userId: Int): List<Todo>
+
+    @GET("comments")
+    suspend fun getComments(): List<Comment>
 }

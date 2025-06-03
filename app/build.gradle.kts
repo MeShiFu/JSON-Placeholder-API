@@ -40,6 +40,15 @@ android {
 }
 
 dependencies {
+    implementation (libs.accompanist.permissions.v0301)
+    implementation (libs.accompanist.permissions)
+    implementation (libs.play.services.location)
+    implementation (libs.maps.compose.v2112)
+    implementation (libs.play.services.maps)
+    implementation (libs.androidx.datastore.preferences);
+    implementation (libs.play.services.location);
+    implementation (libs.maps.compose)
+    implementation (libs.coil.compose)
     implementation (libs.ui)
     implementation (libs.androidx.navigation.compose)
     implementation (libs.androidx.lifecycle.runtime.ktx)

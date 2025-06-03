@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.jsonplaceholderapi.ui.screen.MainScreen
+import com.example.jsonplaceholderapi.ui.screen.MyProfileScreen
 import com.example.jsonplaceholderapi.ui.screen.PostDetailScreen
 import com.example.jsonplaceholderapi.ui.screen.UserDetailScreen
 
@@ -24,6 +25,9 @@ fun NavGraph(
         composable("userDetail/{userId}") { backStackEntry ->
             val userId = backStackEntry.arguments?.getString("userId")?.toInt() ?: 0
             UserDetailScreen(navController, userId)
+        }
+        composable("myprofile") {
+            MyProfileScreen(navController)
         }
     }
 }

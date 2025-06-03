@@ -2,6 +2,7 @@ package com.example.jsonplaceholderapi.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.jsonplaceholderapi.data.model.Comment
 import com.example.jsonplaceholderapi.data.model.Post
 import com.example.jsonplaceholderapi.data.model.User
 import com.example.jsonplaceholderapi.data.repository.MainRepository
@@ -16,6 +17,9 @@ class MainViewModel(private val repository: MainRepository) : ViewModel() {
 
     private val _users = MutableStateFlow<List<User>>(emptyList())
     val users: StateFlow<List<User>> = _users
+
+    private val _comments = MutableStateFlow<List<Comment>>(emptyList())
+    val comments: StateFlow<List<Comment>> = _comments
 
     private val _isLoading = MutableStateFlow(true)
     val isLoading: StateFlow<Boolean> = _isLoading
@@ -33,11 +37,24 @@ class MainViewModel(private val repository: MainRepository) : ViewModel() {
                 _isLoading.value = true
                 _posts.value = repository.getPosts()
                 _users.value = repository.getUsers()
+                _comments.value = repository.getComments()
             } catch (e: Exception) {
                 _error.value = e.localizedMessage
             } finally {
                 _isLoading.value = false
             }
         }
+    }
+
+
+    fun addComment(postId: Int, authorName: String, authorSurname: String, authorImagePath: String, content: String) {
+        val newComment = Comment(
+            postId = postId,
+            authorName = authorName,
+            authorSurname = authorSurname,
+            authorImagePath = authorImagePath,
+            content = content
+        )
+        _comments.value = _comments.value + newComment
     }
 }

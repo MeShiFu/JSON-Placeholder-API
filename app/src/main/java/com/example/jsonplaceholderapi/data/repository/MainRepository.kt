@@ -1,5 +1,6 @@
 package com.example.jsonplaceholderapi.data.repository
 
+import com.example.jsonplaceholderapi.data.model.Comment
 import com.example.jsonplaceholderapi.data.model.Post
 import com.example.jsonplaceholderapi.data.model.Todo
 import com.example.jsonplaceholderapi.data.model.User
@@ -12,4 +13,7 @@ class MainRepository(private val api: ApiService) {
     suspend fun getUsers() = api.getUsers()
     suspend fun getUser(id: Int) = api.getUser(id)
     suspend fun getTodos(userId: Int) = api.getTodos(userId)
+    suspend fun getComments(): List<Comment> {
+        return api.getComments()
+    }
 }
